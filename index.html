@@ -1,584 +1,714 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IM8 × Lore — Partnership Proposal</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --lore-green: #002B19;
-    --lore-sage: #98B697;
-    --lore-light-green: #C7DBB5;
-    --lore-bright-green: #89BB5B;
-    --lore-off-white: #F4EFEC;
-    --lore-charcoal: #232323;
-    --lore-orange: #ED6F2B;
-    --lore-gold: #D0AF42;
-    --lore-blue: #BBE0FC;
-    --lore-powder: #DCE5EA;
+    --red: #BE2528;
+    --red-dark: #7A1517;
+    --red-muted: #C96B6D;
+    --cream: #F5EDE0;
+    --cream-dark: #EDE0CF;
+    --ink: #1A1208;
+    --ink-mid: rgba(26,18,8,0.52);
+    --ink-light: rgba(26,18,8,0.32);
+    --ink-faint: rgba(26,18,8,0.07);
   }
-
-  html { scroll-behavior: smooth; }
 
   body {
     font-family: 'DM Sans', sans-serif;
-    background: var(--lore-off-white);
-    color: var(--lore-charcoal);
-    min-height: 100vh;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
   }
 
-  /* HERO */
-  .hero {
-    background: var(--lore-green);
-    padding: 80px 40px 72px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -120px; left: 50%;
-    transform: translateX(-50%);
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    border: 1px solid rgba(200,220,185,0.08);
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    top: -60px; left: 50%;
-    transform: translateX(-50%);
-    width: 400px; height: 400px;
-    border-radius: 50%;
-    border: 1px solid rgba(200,220,185,0.06);
-  }
-
-  .collab-label {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--lore-sage);
-    margin-bottom: 28px;
-  }
-
-  .hero-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(48px, 8vw, 88px);
-    color: var(--lore-off-white);
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-
-  .hero-title em {
-    font-style: italic;
-    color: var(--lore-light-green);
-  }
-
-  .hero-sub {
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--lore-sage);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-top: 20px;
-    margin-bottom: 0;
-  }
-
-  .hero-tagline {
-    font-size: 16px;
-    color: rgba(244,239,236,0.55);
-    margin-top: 12px;
-    font-weight: 300;
-    letter-spacing: 0.04em;
-  }
-
-  /* INTRO STRIP */
-  .intro {
-    background: var(--lore-charcoal);
-    padding: 36px 40px;
-    text-align: center;
-  }
-
-  .intro p {
-    max-width: 660px;
+  .page {
+    max-width: 1080px;
     margin: 0 auto;
-    font-size: 15px;
-    color: rgba(244,239,236,0.65);
-    line-height: 1.75;
-    font-weight: 300;
+    padding: 52px 52px 72px;
   }
 
-  .intro strong {
-    color: var(--lore-light-green);
-    font-weight: 500;
-  }
-
-  /* SECTION */
-  .section {
-    max-width: 1160px;
-    margin: 0 auto;
-    padding: 72px 32px;
-  }
-
-  .section-header {
-    margin-bottom: 48px;
-  }
-
-  .section-eyebrow {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--lore-sage);
-    margin-bottom: 10px;
-  }
-
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(28px, 4vw, 40px);
-    color: var(--lore-green);
-    line-height: 1.15;
-  }
-
-  /* TIER CARDS */
-  .tiers-grid {
+  .header {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: end;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--ink-faint);
+    margin-bottom: 52px;
   }
 
-  @media (max-width: 860px) {
-    .tiers-grid { grid-template-columns: 1fr; }
-  }
-
-  .tier-card {
-    background: #fff;
-    border-radius: 16px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgba(35,35,35,0.08);
-  }
-
-  .tier-card.flagship {
-    border: 2px solid var(--lore-green);
-  }
-
-  .tier-card-header {
-    padding: 28px 28px 24px;
-    border-bottom: 1px solid rgba(35,35,35,0.07);
-  }
-
-  .tier-card.flagship .tier-card-header {
-    background: var(--lore-green);
-  }
-
-  .tier-badge {
-    display: inline-block;
+  .header-pre {
     font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
+    font-weight: 500;
+    letter-spacing: 0.26em;
     text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: 20px;
+    color: var(--red);
     margin-bottom: 14px;
+    display: block;
   }
 
-  .badge-1 { background: var(--lore-bright-green); color: var(--lore-green); }
-  .badge-2 { background: var(--lore-light-green); color: var(--lore-green); }
-  .badge-3 { background: rgba(35,35,35,0.07); color: rgba(35,35,35,0.55); }
-
-  .tier-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 22px;
-    line-height: 1.2;
-    margin-bottom: 6px;
-  }
-
-  .tier-card.flagship .tier-name { color: var(--lore-off-white); }
-  .tier-card:not(.flagship) .tier-name { color: var(--lore-charcoal); }
-
-  .tier-subtitle {
-    font-size: 12.5px;
-    line-height: 1.6;
+  .header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 7vw, 88px);
     font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -0.01em;
   }
 
-  .tier-card.flagship .tier-subtitle { color: rgba(199,219,181,0.7); }
-  .tier-card:not(.flagship) .tier-subtitle { color: rgba(35,35,35,0.5); }
+  .header-title .im8 { color: var(--red); display: block; }
+  .header-title .amp { color: rgba(26,18,8,0.15); font-style: italic; }
+  .header-title .lore { color: var(--ink); display: block; }
 
-  .tier-price-block {
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-  }
+  .header-right { padding-bottom: 6px; }
 
-  .tier-card:not(.flagship) .tier-price-block {
-    border-top: 1px solid rgba(35,35,35,0.07);
-  }
-
-  .tier-price {
-    font-size: 30px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-  }
-
-  .tier-card.flagship .tier-price { color: #fff; }
-  .tier-card:not(.flagship) .tier-price { color: var(--lore-charcoal); }
-
-  .tier-price-note {
-    font-size: 11.5px;
-    margin-top: 4px;
+  .header-hook {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2vw, 24px);
     font-weight: 300;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.45;
+    margin-bottom: 16px;
   }
 
-  .tier-card.flagship .tier-price-note { color: var(--lore-sage); }
-  .tier-card:not(.flagship) .tier-price-note { color: rgba(35,35,35,0.45); }
+  .header-hook em { color: var(--red); font-style: normal; font-weight: 400; }
 
-  .tier-card-body {
-    padding: 24px 28px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .feature-group {}
-
-  .feature-group-label {
-    font-size: 9.5px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--lore-sage);
-    margin-bottom: 10px;
-  }
-
-  .feature-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .feature-list li {
+  .header-sub {
     font-size: 13px;
-    line-height: 1.5;
-    color: rgba(35,35,35,0.7);
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-weight: 300;
-  }
-
-  .feat-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    margin-top: 5px;
-  }
-
-  .dot-1 { background: var(--lore-bright-green); }
-  .dot-2 { background: var(--lore-sage); }
-  .dot-3 { background: rgba(35,35,35,0.2); }
-
-  .tier-footer {
-    padding: 16px 28px 24px;
-    font-size: 11.5px;
-    color: rgba(35,35,35,0.4);
-    font-style: italic;
-    font-weight: 300;
-    border-top: 1px solid rgba(35,35,35,0.05);
-  }
-
-  /* UNIVERSAL INCLUDES */
-  .universal {
-    background: var(--lore-green);
-    padding: 56px 40px;
-    text-align: center;
-  }
-
-  .universal-title {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--lore-sage);
-    margin-bottom: 20px;
-  }
-
-  .universal-items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  .universal-item {
-    background: rgba(199,219,181,0.1);
-    border: 1px solid rgba(199,219,181,0.15);
-    border-radius: 30px;
-    padding: 8px 18px;
-    font-size: 12.5px;
-    color: var(--lore-light-green);
-    font-weight: 400;
-  }
-
-  /* PARTNERSHIP PHILOSOPHY */
-  .philosophy {
-    background: var(--lore-charcoal);
-    padding: 80px 40px;
-    text-align: center;
-  }
-
-  .philosophy-quote {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(22px, 3.5vw, 34px);
-    color: var(--lore-off-white);
-    max-width: 700px;
-    margin: 0 auto 24px;
-    line-height: 1.4;
-  }
-
-  .philosophy-quote em {
-    color: var(--lore-light-green);
-    font-style: italic;
-  }
-
-  .philosophy-body {
-    max-width: 540px;
-    margin: 0 auto;
-    font-size: 14px;
-    color: rgba(244,239,236,0.45);
+    color: var(--ink-mid);
     line-height: 1.8;
     font-weight: 300;
   }
 
-  /* FOOTER */
-  footer {
-    background: var(--lore-green);
-    padding: 32px 40px;
+  .dream {
+    background: var(--ink);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+
+  .dream-top {
+    padding: 52px 52px 44px;
+    border-bottom: 1px solid rgba(245,237,224,0.06);
+  }
+
+  .dream-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--red-muted);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .dream-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 5vw, 58px);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+  }
+
+  .dream-headline em { font-style: italic; color: var(--red-muted); }
+
+  .dream-desc {
+    font-size: 14px;
+    color: rgba(245,237,224,0.5);
+    line-height: 1.85;
+    font-weight: 300;
+    max-width: 640px;
+  }
+
+  .dream-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(245,237,224,0.06);
+  }
+
+  .stat {
+    padding: 28px 32px;
+    border-right: 1px solid rgba(245,237,224,0.06);
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-num em { font-style: italic; color: var(--red-muted); font-size: 0.75em; }
+
+  .stat-label {
+    font-size: 11px;
+    color: rgba(245,237,224,0.28);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+
+  .dream-includes { padding: 36px 52px 44px; }
+
+  .includes-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(245,237,224,0.2);
+    margin-bottom: 22px;
+    display: block;
+  }
+
+  .includes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .include-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px;
+    background: rgba(245,237,224,0.04);
+    border-radius: 7px;
+  }
+
+  .include-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--red);
+    opacity: 0.6;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .include-text {
+    font-size: 12.5px;
+    color: rgba(245,237,224,0.45);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .dream-addons {
+    padding: 32px 52px 36px;
+    border-top: 1px solid rgba(245,237,224,0.06);
+    background: rgba(190,37,40,0.06);
+  }
+
+  .addons-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red-muted);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .addons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .addon-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 16px 18px;
+    background: rgba(190,37,40,0.08);
+    border: 1px solid rgba(190,37,40,0.2);
+    border-radius: 8px;
+  }
+
+  .addon-icon {
+    color: var(--red-muted);
+    flex-shrink: 0;
+    line-height: 1.4;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+  }
+
+  .addon-name {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: rgba(245,237,224,0.7);
+    margin-bottom: 4px;
+  }
+
+  .addon-desc {
+    font-size: 11.5px;
+    color: rgba(245,237,224,0.3);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .dream-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 52px 36px;
+    border-top: 1px solid rgba(245,237,224,0.06);
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .dream-price-label {
+    font-size: 11px;
+    color: rgba(245,237,224,0.25);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .dream-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--cream);
+  }
+
+  .dream-price-sub {
+    font-size: 12px;
+    color: rgba(245,237,224,0.3);
+    font-weight: 300;
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  .dream-price-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: rgba(245,237,224,0.3);
+    font-weight: 300;
+    font-style: italic;
+    max-width: 340px;
+    line-height: 1.6;
+    text-align: right;
+  }
+
+  .path-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .path-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.4vw, 28px);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 28px;
+    max-width: 680px;
+  }
+
+  .path-intro em { font-style: italic; color: var(--red); }
+
+  .phases {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .phase-card {
+    background: white;
+    border-radius: 12px;
+    padding: 28px 28px 24px;
+    border: 1px solid var(--ink-faint);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .phase-card.entry {
+    border-color: rgba(190,37,40,0.3);
+    background: rgba(190,37,40,0.025);
+  }
+
+  .phase-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .phase-step {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+
+  .phase-card.entry .phase-step { color: var(--red); }
+
+  .phase-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--red);
+    border: 1px solid rgba(190,37,40,0.3);
+    padding: 3px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .phase-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+
+  .phase-name em { font-style: italic; color: var(--red-muted); }
+
+  .phase-desc {
+    font-size: 12.5px;
+    color: var(--ink-mid);
+    line-height: 1.75;
+    font-weight: 300;
+    flex: 1;
+  }
+
+  .phase-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 1px solid var(--ink-faint);
+    padding-top: 16px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .phase-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--ink);
+  }
+
+  .phase-price-sub {
+    font-size: 10px;
+    color: var(--ink-light);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    margin-top: 3px;
+  }
+
+  .phase-lift {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13.5px;
+    color: var(--ink-light);
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 44px;
+  }
+
+  .box {
+    background: white;
+    border-radius: 12px;
+    padding: 28px 28px 26px;
+    border: 1px solid var(--ink-faint);
+  }
+
+  .box-title {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .need-list {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .need-item {
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    font-weight: 300;
+    padding-left: 16px;
+    border-left: 2px solid rgba(190,37,40,0.2);
+  }
+
+  .need-item strong {
+    color: var(--ink);
+    font-weight: 500;
+    display: block;
+    font-size: 12.5px;
+    margin-bottom: 1px;
+  }
+
+  .steps-list { display: flex; flex-direction: column; gap: 0; }
+
+  .step {
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 14px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--ink-faint);
+    align-items: start;
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-n {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: rgba(26,18,8,0.1);
+    line-height: 1;
+    padding-top: 2px;
+  }
+
+  .step-text {
+    font-size: 12.5px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    font-weight: 300;
+    padding-top: 3px;
+  }
+
+  .step-text strong {
+    display: block;
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+
+  .footer-bar {
+    padding-top: 32px;
+    border-top: 1px solid var(--ink-faint);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 16px;
   }
 
-  .footer-brand {
-    font-family: 'DM Serif Display', serif;
-    font-size: 22px;
-    color: var(--lore-off-white);
-    letter-spacing: 0.02em;
+  .footer-logos { display: flex; align-items: center; gap: 12px; }
+  .footer-im8 { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; color: var(--red); }
+  .footer-x { color: rgba(26,18,8,0.15); }
+  .footer-lore { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 300; color: var(--ink); font-style: italic; }
+
+  .footer-close {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink-mid);
+    max-width: 420px;
+    text-align: right;
+    line-height: 1.5;
   }
 
-  .footer-right {
-    font-size: 11px;
-    color: var(--lore-sage);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
+  .footer-close em { color: var(--red); font-style: normal; }
 
-  /* DIVIDER LINE */
-  .divider-line {
-    height: 1px;
-    background: rgba(35,35,35,0.08);
-    margin: 0 32px;
+  @media (max-width: 780px) {
+    .page { padding: 32px 24px 52px; }
+    .header { grid-template-columns: 1fr; }
+    .dream-stats { grid-template-columns: repeat(2, 1fr); }
+    .includes-grid { grid-template-columns: 1fr 1fr; }
+    .addons-grid { grid-template-columns: 1fr; }
+    .dream-includes, .dream-top, .dream-price-row, .dream-addons { padding-left: 28px; padding-right: 28px; }
+    .phases, .bottom-grid { grid-template-columns: 1fr; }
+    .footer-close { text-align: left; }
   }
-
 </style>
 </head>
 <body>
+<div class="page">
 
-<div class="hero">
-  <p class="collab-label">Partnership Proposal · 2025</p>
-  <h1 class="hero-title">IM8 <em>&</em> Lore</h1>
-  <p class="hero-sub">A Bathing Club for Serious Bathers</p>
-  <p class="hero-tagline">Hot. Cold. Human.</p>
-</div>
-
-<div class="intro">
-  <p>The sauna and cold plunge lifestyle is <strong>directly connected to the IM8 practice.</strong> This partnership brings together two brands built on performance, ritual, and community — with three investment tiers designed to fit any level of activation.</p>
-</div>
-
-<div class="section">
-  <div class="section-header">
-    <p class="section-eyebrow">Investment Tiers</p>
-    <h2 class="section-title">Choose your level<br>of partnership</h2>
+  <div class="header">
+    <div>
+      <span class="header-pre">IM8 × Lore · Partnership Proposal · 2025</span>
+      <h1 class="header-title">
+        <span class="im8">I·M·8</span>
+        <span class="amp"> & </span>
+        <span class="lore">Lore</span>
+      </h1>
+    </div>
+    <div class="header-right">
+      <p class="header-hook">The ritual of hot and cold is the <em>most natural home</em> for IM8 that exists. Here's how we build something remarkable together.</p>
+      <p class="header-sub">We've addressed your questions directly — and made it as easy as possible to say yes.</p>
+    </div>
   </div>
 
-  <div class="tiers-grid">
-
-    <!-- TIER 1 -->
-    <div class="tier-card flagship">
-      <div class="tier-card-header">
-        <span class="tier-badge badge-1">Tier 1 — Full Immersion</span>
-        <h3 class="tier-name">The 90-Day Challenge</h3>
-        <p class="tier-subtitle">Flagship partnership with maximum brand presence, content output, and community reach</p>
-        <div class="tier-price-block">
-          <div class="tier-price">$22,500</div>
-          <div class="tier-price-note">90 members × $250 — 3-month commitment</div>
-        </div>
-      </div>
-      <div class="tier-card-body">
-        <div class="feature-group">
-          <p class="feature-group-label">Sessions</p>
-          <ul class="feature-list">
-            <li><span class="feat-dot dot-1"></span>75-min privatized sauna sessions, 5× per week for 90 days</li>
-            <li><span class="feat-dot dot-1"></span>Up to 90 members per session via IM8 pass</li>
-            <li><span class="feat-dot dot-1"></span>Partnership kick-off event included</li>
-          </ul>
-        </div>
-        <div class="feature-group">
-          <p class="feature-group-label">Talent & Community</p>
-          <ul class="feature-list">
-            <li><span class="feat-dot dot-1"></span>Curated mix: influencers, Lore members, IM8 ambassadors, athletes & invitees</li>
-            <li><span class="feat-dot dot-1"></span>Option to inject celebrity or VIP host</li>
-            <li><span class="feat-dot dot-1"></span>50 VIP members receive co-branded welcome kit</li>
-          </ul>
-        </div>
-        <div class="feature-group">
-          <p class="feature-group-label">Product & Content</p>
-          <ul class="feature-list">
-            <li><span class="feat-dot dot-1"></span>IM8 beverage served before & after every session</li>
-            <li><span class="feat-dot dot-1"></span>All content owned & usable by IM8</li>
-            <li><span class="feat-dot dot-1"></span>Co-branded IM8 Sweat Kit: sauna hat, towel, water bottle</li>
-            <li><span class="feat-dot dot-1"></span>IM8 in Lore retail throughout</li>
-          </ul>
-        </div>
-        <div class="feature-group">
-          <p class="feature-group-label">Comms & Distribution</p>
-          <ul class="feature-list">
-            <li><span class="feat-dot dot-1"></span>IM8 discount code + affiliate link to members</li>
-            <li><span class="feat-dot dot-1"></span>Shared email & social communications</li>
-            <li><span class="feat-dot dot-1"></span>Campaign video (IM8 content team)</li>
-            <li><span class="feat-dot dot-1"></span>Lore handles all production costs & invites</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tier-footer">Complimentary Lore membership for all attendees</div>
+  <div class="dream">
+    <div class="dream-top">
+      <span class="dream-eyebrow">The full vision · Phase 2</span>
+      <h2 class="dream-headline">90 days. Five sessions a week.<br><em>The IM8 Sauna Club.</em></h2>
+      <p class="dream-desc">Fully privatised 75-minute sauna sessions, five days a week for 90 days. Up to 90 attendees per session — a curated mix of elite athletes, leading influencers, IM8 ambassadors, and VIP invitees. IM8 before and after, every single time. Lore handles every detail of production, curation, and logistics. IM8 owns all the content. This is what IM8 living inside the most intentional wellness community in New York looks like.</p>
     </div>
 
-    <!-- TIER 2 -->
-    <div class="tier-card">
-      <div class="tier-card-header">
-        <span class="tier-badge badge-2">Tier 2 — The Challenge</span>
-        <h3 class="tier-name">30/60-Day Program</h3>
-        <p class="tier-subtitle">Scaled version of the flagship — fewer buyouts, reduced cadence, same core experience</p>
-        <div class="tier-price-block">
-          <div class="tier-price">TBD</div>
-          <div class="tier-price-note">Reduced membership buyout · 30 or 60-day term</div>
-        </div>
+    <div class="dream-stats">
+      <div class="stat">
+        <div class="stat-num">90<em>days</em></div>
+        <div class="stat-label">Full season partnership</div>
       </div>
-      <div class="tier-card-body">
-        <div class="feature-group">
-          <p class="feature-group-label">Sessions</p>
-          <ul class="feature-list">
-            <li><span class="feat-dot dot-2"></span>Privatized sauna sessions at reduced weekly cadence</li>
-            <li><span class="feat-dot dot-2"></span>30 or 60-day challenge format</li>
-            <li><span class="feat-dot dot-2"></span>Fewer total membership buyouts</li>
-          </ul>
-        </div>
-        <div class="feature-group">
-          <p class="feature-group-label">Talent & Community</p>
-          <ul class="feature-list">
-            <li><span class="feat-dot dot-2"></span>Curated influencer & ambassador mix</li>
-            <li><span class="feat-dot dot-2"></span>Lore handles all curation and production</li>
-          </ul>
-        </div>
-        <div class="feature-group">
-          <p class="feature-group-label">Product & Content</p>
-          <ul class="feature-list">
-            <li><span class="feat-dot dot-2"></span>IM8 served at all sessions</li>
-            <li><span class="feat-dot dot-2"></span>Content captured & owned by IM8</li>
-            <li><span class="feat-dot dot-2"></span>IM8 in Lore retail</li>
-          </ul>
-        </div>
-        <div class="feature-group">
-          <p class="feature-group-label">Comms & Distribution</p>
-          <ul class="feature-list">
-            <li><span class="feat-dot dot-2"></span>IM8 discount code or affiliate link</li>
-            <li><span class="feat-dot dot-2"></span>Shared social & email comms</li>
-          </ul>
-        </div>
+      <div class="stat">
+        <div class="stat-num">450<em>+</em></div>
+        <div class="stat-label">Total sessions across the partnership</div>
       </div>
-      <div class="tier-footer">VIP gifting and co-branded sweat kit available as add-on</div>
+      <div class="stat">
+        <div class="stat-num">90<em>guests</em></div>
+        <div class="stat-label">Per session · hand-curated</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0<em>lift</em></div>
+        <div class="stat-label">No NYC ground team needed</div>
+      </div>
     </div>
 
-    <!-- TIER 3 -->
-    <div class="tier-card">
-      <div class="tier-card-header">
-        <span class="tier-badge badge-3">Tier 3 — Tasting Days</span>
-        <h3 class="tier-name">IM8 Sampling Sessions</h3>
-        <p class="tier-subtitle">Regular product sampling integrated into Lore's existing session calendar</p>
-        <div class="tier-price-block">
-          <div class="tier-price">TBD</div>
-          <div class="tier-price-note">Per-session or monthly sponsorship</div>
-        </div>
+    <div class="dream-includes">
+      <span class="includes-label">Everything included</span>
+      <div class="includes-grid">
+        <div class="include-item"><span class="include-dot"></span><span class="include-text">Celebrity or VIP host option</span></div>
+        <div class="include-item"><span class="include-dot"></span><span class="include-text">Full content ownership by IM8</span></div>
+        <div class="include-item"><span class="include-dot"></span><span class="include-text">50 VIP welcome kits (gifted by IM8)</span></div>
+        <div class="include-item"><span class="include-dot"></span><span class="include-text">Affiliate link + discount code to all members</span></div>
+        <div class="include-item"><span class="include-dot"></span><span class="include-text">IM8 in Lore retail throughout</span></div>
+        <div class="include-item"><span class="include-dot"></span><span class="include-text">Co-branded email &amp; social comms</span></div>
       </div>
-      <div class="tier-card-body">
-        <div class="feature-group">
-          <p class="feature-group-label">Sessions</p>
-          <ul class="feature-list">
-            <li><span class="feat-dot dot-3"></span>Select sessions designated as IM8 tasting days</li>
-            <li><span class="feat-dot dot-3"></span>IM8 complimentary for all members & attendees</li>
-            <li><span class="feat-dot dot-3"></span>Regular, ongoing cadence</li>
-          </ul>
-        </div>
-        <div class="feature-group">
-          <p class="feature-group-label">Talent & Community</p>
-          <ul class="feature-list">
-            <li><span class="feat-dot dot-3"></span>IM8 granted select sessions to invite their own influencers</li>
-            <li><span class="feat-dot dot-3"></span>Access to Lore's existing member community</li>
-          </ul>
-        </div>
-        <div class="feature-group">
-          <p class="feature-group-label">Product & Gifting</p>
-          <ul class="feature-list">
-            <li><span class="feat-dot dot-3"></span>IM8 in Lore retail</li>
-            <li><span class="feat-dot dot-3"></span>Organic content capture on tasting days</li>
-            <li><span class="feat-dot dot-3"></span>VIP members gifted IM8 sampling kit</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tier-footer">Entry point — lowest investment, tests brand alignment in venue</div>
     </div>
 
+    <div class="dream-addons">
+      <span class="addons-label">Optional enhancements</span>
+      <div class="addons-grid">
+        <div class="addon-item">
+          <div class="addon-icon">+</div>
+          <div class="addon-content">
+            <div class="addon-name">Partnership Kick-Off Event</div>
+            <div class="addon-desc">A launch moment for both communities. Lore produces and curates.</div>
+          </div>
+        </div>
+        <div class="addon-item">
+          <div class="addon-icon">+</div>
+          <div class="addon-content">
+            <div class="addon-name">Co-Branded IM8 Sweat Kit</div>
+            <div class="addon-desc">Sauna hat, towel, water bottle — IM8 branded, Lore distributed.</div>
+          </div>
+        </div>
+        <div class="addon-item">
+          <div class="addon-icon">+</div>
+          <div class="addon-content">
+            <div class="addon-name">Hero Campaign Video</div>
+            <div class="addon-desc">Shot on-site at Lore, produced by IM8's content team. All rights with IM8.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dream-price-row">
+      <div>
+        <div class="dream-price-label">Monthly membership fee</div>
+        <div class="dream-price">$22,500<span style="font-size:0.45em; color: rgba(245,237,224,0.35); font-style:italic;">/month</span></div>
+        <div class="dream-price-sub">3-month programme · retail product at wholesale rate</div>
+      </div>
+      <p class="dream-price-note">The only cost is the running rate for membership access to Lore. No production fees, no event costs on top. Lore absorbs all of that.</p>
+    </div>
   </div>
-</div>
 
-<div class="universal">
-  <p class="universal-title">Included across all tiers</p>
-  <div class="universal-items">
-    <span class="universal-item">IM8 product in Lore retail</span>
-    <span class="universal-item">VIP member gifting</span>
-    <span class="universal-item">Content rights to IM8</span>
-    <span class="universal-item">Lore handles production & curation</span>
-    <span class="universal-item">Access to Lore's member community</span>
-    <span class="universal-item">IM8 brand presence in venue</span>
+  <div style="margin-bottom: 28px;">
+    <span class="path-label">Start here · Phase 1</span>
+    <p class="path-intro">We heard you. <em>Start lean, build from there.</em> Phase 1 is built around our grand opening — the highest-energy moment to prove what IM8 and Lore can do together.</p>
   </div>
+
+  <div class="phases">
+    <div class="phase-card entry">
+      <div class="phase-top">
+        <span class="phase-step">Phase 1 · 30-Day Launch Window</span>
+        <span class="phase-badge">Start here</span>
+      </div>
+      <h3 class="phase-name">Weekly IM8<br><em>Tasting Sessions</em></h3>
+      <p class="phase-desc">A dedicated IM8 session on the Lore calendar every week — complimentary for every member and guest. Maximum community exposure, zero friction. Everyone in the building experiences IM8 at the peak moment of our grand opening energy.</p>
+      <div class="phase-footer">
+        <div>
+          <div class="phase-price">$8,000</div>
+          <div class="phase-price-sub">Standard private session rate · no additional fees</div>
+        </div>
+        <div class="phase-lift">Retail placement included</div>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-top">
+        <span class="phase-step">Phase 1 · Content Session</span>
+      </div>
+      <h3 class="phase-name">IM8 Private<br><em>Content Day</em></h3>
+      <p class="phase-desc">One fully privatised session within the 30 days, curated for IM8 to invite their own influencers, ambassadors, and KOLs. Designed as a content creation moment — immersive, atmospheric, and built to generate the kind of authentic material that fuels a paid media strategy. Lore handles everything. IM8 owns it all.</p>
+      <div class="phase-footer">
+        <div class="phase-lift">Included within Phase 1</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-grid">
+    <div class="box">
+      <span class="box-title">What we need from IM8</span>
+      <div class="need-list">
+        <div class="need-item"><strong>Product supply</strong>Wholesale rate for retail + complimentary product for in-session service. Lore handles all logistics.</div>
+        <div class="need-item"><strong>50 VIP welcome kits</strong>Gifted from IM8 to our top members at launch. Lore handles all distribution.</div>
+        <div class="need-item"><strong>Co-branded comms</strong>Shared email and social to announce the partnership. We draft everything, you approve.</div>
+        <div class="need-item"><strong>One content day (Phase 2)</strong>Your team on-site for the campaign video. Fully coordinated by us.</div>
+      </div>
+    </div>
+
+    <div class="box">
+      <span class="box-title">Proposed next steps</span>
+      <div class="steps-list">
+        <div class="step"><span class="step-n">1</span><div class="step-text"><strong>Confirm Phase 1 at $8,000</strong>Lock in a launch date tied to the Lore grand opening.</div></div>
+        <div class="step"><span class="step-n">2</span><div class="step-text"><strong>Agree wholesale rate</strong>IM8 shares retail pricing. Lore places initial stock order.</div></div>
+        <div class="step"><span class="step-n">3</span><div class="step-text"><strong>Confirm VIP kit gifting</strong>Lore provides the member list. IM8 ships directly.</div></div>
+        <div class="step"><span class="step-n">4</span><div class="step-text"><strong>Launch, capture, review at 30 days</strong>We prove the community loves IM8, then move into Phase 2 together.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <div class="footer-logos">
+      <span class="footer-im8">I·M·8</span>
+      <span class="footer-x"> × </span>
+      <span class="footer-lore">lore</span>
+    </div>
+    <p class="footer-close">The sauna and cold plunge is where the IM8 practice lives. <em>Let's start small and build something extraordinary.</em></p>
+  </div>
+
 </div>
-
-<div class="philosophy">
-  <p class="philosophy-quote">"The sauna and cold plunge lifestyle is <em>directly connected</em> to the IM8 practice."</p>
-  <p class="philosophy-body">Lore Bathing Club exists at the intersection of hot and cold immersion, community ritual, and human performance. IM8 lives in the same space. This partnership is a natural extension of both brands — built for serious people who take their practice seriously.</p>
-</div>
-
-<footer>
-  <span class="footer-brand">lore</span>
-  <span class="footer-right">A Bathing Club · Partnership Proposal · 2025</span>
-</footer>
-
 </body>
 </html>
